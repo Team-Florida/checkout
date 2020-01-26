@@ -10,3 +10,6 @@ package-lock.json
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 client/dist/bundle.js
 
+#Test Reports
+coverage/
+
