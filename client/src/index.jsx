@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Checkout from './components/Checkout.jsx'
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('app'));
+ReactDOM.render(<Checkout />, document.getElementById('app'));
