@@ -12,7 +12,7 @@ let repoSchema = mongoose.Schema({
         infant: Number
     },
     priceRelatedToSumOfAdultAndChild: Object,
-    Views: {
+    views: {
         today: Number, 
         lastWeek: Number, 
         lastMonth: Number,
