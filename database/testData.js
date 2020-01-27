@@ -73,7 +73,7 @@ const generateData = function(amountOfData) {
             bookedDates: getBookedDates(),
             guestsAllowed: getGuestsAllowed(),
             priceRelatedToSumOfAdultAndChild: getPriceRelatedToSumOfAdultAndChild(adultAndChild),
-            Views: getViews()
+            views: getViews()
         };
         dataset.push(data)
     }
