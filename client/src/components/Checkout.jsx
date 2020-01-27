@@ -4,19 +4,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import Header from './Header.jsx'
+import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.jsx'
 
-const Wrapper = styled.div`
-    display: block;
-    color: '#484848';
-    border: 1px solid #e4e4e4;
-    border-width: 1px;
-    width: 326px;
-    height: 426px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 16px;
-    padding-bottom: 24px;
-    `;
 
 class Checkout extends React.Component {
     constructor(props) {
@@ -60,11 +49,11 @@ class Checkout extends React.Component {
 
     render() {
         return (
-            <Wrapper>
+            <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
               <form id = "bookItForm"></form>
               <div id = "footer">this is a footer</div>
-            </Wrapper>
+            </CheckoutWrapper>
         )
     }
 }
