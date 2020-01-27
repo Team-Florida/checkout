@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Checkout from './Checkout.jsx';
+import Checkout from '../components/Checkout.jsx';
 
 describe('Checkout Test', () => {
   it('1+1 Should equal 2', () => {
