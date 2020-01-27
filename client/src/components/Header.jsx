@@ -2,12 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import PricePerNightInfo from './PricePerNightInfo.jsx';
+import HeaderWrapper from '../styles/Header/HeaderWrapper.jsx'
 
-const HeaderWrapper = styled.div`
-    font-size: 14px;
-    line-height: 1.43;
-    color: #484848;
-    `;
 
 const Header = (props) => {
     console.log(props)
