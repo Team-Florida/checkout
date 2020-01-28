@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+
 import PricePerNightInfo from './PricePerNightInfo.jsx';
-import HeaderWrapper from '../styles/Header/HeaderWrapper.jsx'
+import StarInfo from './StarInfo.jsx'
+import HeaderWrapper from '../styles/Header/HeaderWrapper.js'
+
+
 
 
 const Header = (props) => {
@@ -10,7 +14,7 @@ const Header = (props) => {
     return (
         <HeaderWrapper>
             <PricePerNightInfo pricePerNight = {props.pricePerNight}/>
-            <div>This is star info </div>
+            <StarInfo starReviewTotal = {props.starReviewTotal} numberOfReviews = {props.numberOfReviews} />
         </HeaderWrapper>
     )
 
