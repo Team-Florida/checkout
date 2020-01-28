@@ -1,33 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import PricePerNightInfoWrapper from '../styles/PricePerNightInfo/PricePerNightInfoWrapper.jsx'
+import PricePerNightInfoWrapper from '../styles/PricePerNightInfo/PricePerNightInfoWrapper.js'
+import Price from '../styles/PricePerNightInfo/Price.js'
+import PriceText from '../styles/PricePerNightInfo/PriceText.js'
 
-// const PricePerNightInfoWrapper = styled.div`
-//     width: 326px;
-//     height: 28px;
-//     font-size: 14px;
-//     line-height: 1.43;
-//     color: #484848;
-//     `;
-
-// PricePerNightInfoWrapper.displayName = 'test';
-
-const PriceWrapper = styled.span`
-
-`
-
-const PricePerNightInfo = (props) => {
-    //console.log(props.pricePerNight)
-    return (
-        <div>
+const PricePerNightInfo = (props) => (
         <PricePerNightInfoWrapper>
-            ${props.pricePerNight}
+          <Price>${props.pricePerNight}</Price>
+          <PriceText> per night</PriceText>
         </PricePerNightInfoWrapper>
-        <div></div>
-        </div>
     )
-
-}
 
 export default PricePerNightInfo

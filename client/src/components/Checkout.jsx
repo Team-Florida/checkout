@@ -4,7 +4,9 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import Header from './Header.jsx'
-import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.jsx'
+import BookItForm from './BookItForm.jsx'
+import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.js'
+
 
 
 class Checkout extends React.Component {
@@ -51,7 +53,7 @@ class Checkout extends React.Component {
         return (
             <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
-              <form id = "bookItForm"></form>
+              <BookItForm />
               <div id = "footer">this is a footer</div>
             </CheckoutWrapper>
         )

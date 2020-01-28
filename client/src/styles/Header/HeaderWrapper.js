@@ -5,3 +5,5 @@ font-size: 14px;
 line-height: 1.43;
 color: #484848;
 `;
+
+export default HeaderWrapper

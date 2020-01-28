@@ -12,7 +12,7 @@
     "server-dev": "nodemon server/index.js",
     "seed-database": "node database/seedingScript.js",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage --colors"
   },
   "dependencies": {
