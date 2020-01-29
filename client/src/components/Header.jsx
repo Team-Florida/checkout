@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 
 import PricePerNightInfo from './PricePerNightInfo.jsx';
 import StarInfo from './StarInfo.jsx'

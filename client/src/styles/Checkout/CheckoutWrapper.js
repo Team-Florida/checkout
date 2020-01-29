@@ -6,7 +6,7 @@ const CheckoutWrapper = styled.div`
     border: 1px solid #e4e4e4;
     border-width: 1px;
     width: 326px;
-    height: 426px;
+    height: auto;
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 16px;
