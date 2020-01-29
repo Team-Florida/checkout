@@ -14,3 +14,5 @@ const CheckoutWrapper = styled.div`
     `;
 
 export default CheckoutWrapper
+
+//height auto might work for a lot of problems

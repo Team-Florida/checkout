@@ -3,8 +3,7 @@ import { shallow } from 'enzyme';
 import Checkout from '../components/Checkout.jsx';
 
 describe('Checkout Test', () => {
-  it('1+1 Should equal 2', () => {
-    const wrapper = shallow(<Checkout />)
+  it('true is truthy', () => {
     expect(true).toBeTruthy()
   });
 });
