@@ -71,7 +71,7 @@ const generateData = function(amountOfData) {
             starReviewTotal: getStarReviewTotal(),
             numberOfReviews: getNumberOfReviews(),
             bookedDates: getBookedDates(),
-            guestsAllowed: getGuestsAllowed(),
+            guestsAllowed: guestsAllowed,
             priceRelatedToSumOfAdultAndChild: getPriceRelatedToSumOfAdultAndChild(adultAndChild),
             views: getViews()
         };
