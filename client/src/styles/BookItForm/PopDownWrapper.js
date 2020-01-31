@@ -4,10 +4,11 @@ const DateArrow = styled.div`
     display: block;
     position: absolute;
     z-index: 2;
-    width: 326px;
+    width: 288px;
     height: auto;
-    background-color: white;
-    padding: 1px;
+    background-color: lightpink;
+    padding-left: 13px;
+    padding-right: 13px;
     border: '1px solid #e4e4e4';
     `;
 
