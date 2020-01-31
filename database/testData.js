@@ -43,7 +43,7 @@ const getPriceRelatedToSumOfAdultAndChild = function(adultAndChild) {
     const price = {}
     const basePrice = Math.floor(Math.random() * 250) + 50
     for (var i = 0; i < adultAndChild; i++) {
-        price[i] = basePrice
+        price[i+1] = basePrice
     }
     return price
 }
@@ -71,7 +71,7 @@ const generateData = function(amountOfData) {
             starReviewTotal: getStarReviewTotal(),
             numberOfReviews: getNumberOfReviews(),
             bookedDates: getBookedDates(),
-            guestsAllowed: getGuestsAllowed(),
+            guestsAllowed: guestsAllowed,
             priceRelatedToSumOfAdultAndChild: getPriceRelatedToSumOfAdultAndChild(adultAndChild),
             views: getViews()
         };
