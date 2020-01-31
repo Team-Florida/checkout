@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
+import moment from 'moment'
 
 import Calendar from './Calendar.jsx'
 import GuestList from './GuestList.jsx'
@@ -11,27 +12,33 @@ import FieldLabel from '../styles/BookItForm/FieldLabel'
 import BookItButton from '../styles/BookItForm/BookItButton.js'
 import ButtonSubtext from '../styles/BookItForm/ButtonSubtext.js'
 import CheckoutButtonWrapper from '../styles/BookItForm/CheckoutButtonWrapper.js'
+import { flattenCalendar } from '../../../calendar/helpers.js';
 
 
 
 class BookItForm extends React.Component {
     constructor(props) {
         super(props)
+        console.log('book it props')
+        console.log(props)
         this.state = {
             calendarClicked: false,
             guestListClicked: false,
-            currentCalendarClicked: null
+            currentCalendarClicked: null,
+            currentMonth: moment().month()
         }
         this.renderCalendar = this.renderCalendar.bind(this)
         this.renderGuestList = this.renderGuestList.bind(this)
         this.handleGuestListClick = this.handleGuestListClick.bind(this)
+        this.handleMonthChangeClick = this.handleMonthChangeClick.bind(this)
     }
 
     renderCalendar() {
         if (this.state.calendarClicked) {
             // return <div style = {{position: 'absolute', top: "200px", height: '308px', width: '332px'}}>the calendar has been clicked</div>
             // return <div style = {{display: "inline-block", position: 'relative', height: 'auto', width: '326px', zIndex: '1', backgroundColor: 'white', border: '1px solid #e4e4e4'}}>the calendar has been clicked<div>test</div></div>
-            return <Calendar />
+            return <Calendar currentMonth = {this.props.flatCalendar[this.state.currentMonth]} handleMonthChangeClick = {this.handleMonthChangeClick}/>
+            return <Calendar currentMonth = {{calendar: [[null, null,1,2,3,4,5],[6,7,8,9,10,11,12],[13,14,15,16,17,18,19], [20,21,22,23,24,25,26],[27,28,29]], month: 'Janurary', year: '2020'}}/>
         }
         return <div></div>
     }
@@ -50,6 +57,27 @@ class BookItForm extends React.Component {
         });
     }
 
+    handleMonthChangeClick(isAdding, event) {
+        event.preventDefault()
+        if (isAdding) {
+            if (this.props.flatCalendar[this.state.currentMonth + 1]) {
+                this.setState((state, props) => {
+                    state.currentMonth += 1
+                    return state
+                })
+            } 
+        
+        } else {
+            if (this.props.flatCalendar[this.state.currentMonth - 1]) {
+                this.setState((state, props) => {
+                    state.currentMonth -= 1
+                    return state
+
+                })
+            }
+        }
+    }
+
 
 
     render() {
@@ -57,7 +85,6 @@ class BookItForm extends React.Component {
         <BookItFormWrapper>
             <FieldLabel>Dates</FieldLabel>
             <DateField readOnly onClick = {(event) => {
-                console.log(event.target)
                 this.setState({
                 calendarClicked: !this.state.calendarClicked
             })}}/>

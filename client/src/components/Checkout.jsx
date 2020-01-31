@@ -7,6 +7,7 @@ import Header from './Header.jsx'
 import BookItForm from './BookItForm.jsx'
 import Footer from './Footer.jsx'
 import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.js'
+const calendar = require('../../../calendar/helpers.js');
 
 
 
@@ -14,6 +15,8 @@ class Checkout extends React.Component {
     constructor(props) {
         super(props)
         console.log(this.refs)
+        this.calendar = calendar.generateCalendar()
+        console.log(this.calendar)
         this.state = {
             name : '',
             bookedDates: {},
@@ -22,6 +25,7 @@ class Checkout extends React.Component {
             starReviewTotal: 0, 
             views : {}, 
             guestsAllowed: {},
+            calendar: this.calendar,
 
             userInfo: {
                 guestsBooked: {
@@ -65,7 +69,15 @@ class Checkout extends React.Component {
     getHouseInfo() {
         axios.get('/house')
             .then((response) => {
-                this.setState(response.data)
+                this.setState((state, props) => {
+                    console.log('this is state ')
+                    console.log(state)
+                    calendar.bookDays(state.calendar, response.data.bookedDates)
+                    response.data.calendar = state.calendar
+                    debugger
+                    state = response.data
+                    return state
+                })
             });
 
     }
@@ -74,7 +86,7 @@ class Checkout extends React.Component {
         return (
             <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
-              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} changeGuests = {this.changeGuests}/>
+              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)}/>
               <Footer />
             </CheckoutWrapper>
         )

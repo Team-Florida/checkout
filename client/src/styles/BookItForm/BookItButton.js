@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const BookItButton = styled.button`
-    background-color: ${props => props.primary ? "#FF5A5F" : "white"};;
+    background-color: ${props => props.primary ? "#FF5A5F" : "white"};
     display: block;
     /* float: left; */
     width: 100%;

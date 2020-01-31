@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonSubtext = styled.span`
+const ButtonSubtext = styled.div`
 overflow-wrap: break-word;
 font-size: 12px;
 font-weight: 400;

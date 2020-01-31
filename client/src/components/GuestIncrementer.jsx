@@ -21,9 +21,10 @@ const GuestIncrementer = (props) => {
     return (
         <GuestIncrementerWrapper>
             {props.current}
-            <IncrementerButton onClick = {(event) => {handleClick(false, event)}}></IncrementerButton>
+            <div style = {{display : "inline-block"}}> <IncrementerButton onClick = {(event) => {handleClick(true, event)}}></IncrementerButton> </div>
+            
             {props.guestsBooked[props.current]}
-            <IncrementerButton onClick = {(event) => {handleClick(true, event)}}></IncrementerButton>
+            <div style = {{display : "inline-block"}}> <IncrementerButton onClick = {(event) => {handleClick(false, event)}}></IncrementerButton> </div>
         </GuestIncrementerWrapper>
         // <div onClick = {() => {handleClick(true)}}>{props.current}</div>
     )
