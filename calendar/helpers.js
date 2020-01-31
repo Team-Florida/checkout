@@ -61,7 +61,7 @@ var generateCalendar = function() {
             dayOfWeek: dayOfWeek, 
             weekOfMonth: currentWeekOfMonth
             }
-        calendar[year][month].calendar[currentWeekOfMonth][dayOfWeek] = {dayOfMonth: dayOfMonth}
+        calendar[year][month].calendar[currentWeekOfMonth][dayOfWeek] = {dayOfMonth: dayOfMonth, date: currentDate.format('l')}
         currentDate.add(1, 'day')
         previousWeekOfMonth = currentWeekOfMonth
     }

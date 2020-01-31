@@ -14,9 +14,7 @@ const calendar = require('../../../calendar/helpers.js');
 class Checkout extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.refs)
         this.calendar = calendar.generateCalendar()
-        console.log(this.calendar)
         this.state = {
             name : '',
             bookedDates: {},
@@ -46,6 +44,7 @@ class Checkout extends React.Component {
         this.getHouseInfo = this.getHouseInfo.bind(this)
         this.nightlyPrice = this.nightlyPrice.bind(this)
         this.changeGuests = this.changeGuests.bind(this)
+        this.changeDaysBooked = this.changeDaysBooked.bind(this)
 
     }
 
@@ -54,8 +53,15 @@ class Checkout extends React.Component {
             state.userInfo.guestsBooked = newGuestBooked
             return state
         })
+    }
 
-
+    changeDaysBooked(bookingInfo) {
+        let typeBooked = Object.keys(bookingInfo)[0]
+        let dateBooked = bookingInfo[typeBooked]
+        this.setState((state,props) => {
+            state.userInfo.daysBooked[typeBooked] = dateBooked
+            return state
+        })
     }
 
     nightlyPrice() {
@@ -74,7 +80,6 @@ class Checkout extends React.Component {
                     console.log(state)
                     calendar.bookDays(state.calendar, response.data.bookedDates)
                     response.data.calendar = state.calendar
-                    debugger
                     state = response.data
                     return state
                 })
@@ -86,7 +91,8 @@ class Checkout extends React.Component {
         return (
             <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
-              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)}/>
+              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} 
+              changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)} changeDaysBooked = {this.changeDaysBooked}/>
               <Footer />
             </CheckoutWrapper>
         )
