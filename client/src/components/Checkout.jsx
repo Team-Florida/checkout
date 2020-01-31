@@ -8,6 +8,7 @@ import BookItForm from './BookItForm.jsx'
 import Footer from './Footer.jsx'
 import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.js'
 const calendar = require('../../../calendar/helpers.js');
+import moment from 'moment'
 
 
 
@@ -32,8 +33,8 @@ class Checkout extends React.Component {
                     infant: 0
                 },
                 daysBooked: {
-                    start: "02/01/20",
-                    end: "02/02/20"
+                    start: "",
+                    end: ""
                 }
 
             }
@@ -45,6 +46,7 @@ class Checkout extends React.Component {
         this.nightlyPrice = this.nightlyPrice.bind(this)
         this.changeGuests = this.changeGuests.bind(this)
         this.changeDaysBooked = this.changeDaysBooked.bind(this)
+        this.daysRenting = this.daysRenting.bind(this)
 
     }
 
@@ -66,6 +68,10 @@ class Checkout extends React.Component {
 
     nightlyPrice() {
         return this.state.priceRelatedToSumOfAdultAndChild[this.state.userInfo.guestsBooked.adult + this.state.userInfo.guestsBooked.child]
+    }
+
+    daysRenting() {
+        return (moment(this.state.userInfo.daysBooked.end) - moment(this.state.userInfo.daysBooked.start))/(1000*60*60*24)
     }
 
     componentDidMount() {
@@ -91,7 +97,7 @@ class Checkout extends React.Component {
         return (
             <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
-              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} 
+              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} pricePerNight = {this.nightlyPrice()} daysRenting = {this.daysRenting()}
               changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)} changeDaysBooked = {this.changeDaysBooked}/>
               <Footer />
             </CheckoutWrapper>

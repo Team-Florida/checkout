@@ -4,6 +4,7 @@ import moment from 'moment'
 
 import Calendar from './Calendar.jsx'
 import GuestList from './GuestList.jsx'
+import BookingSummaryList from './BookingSummaryList.jsx'
 
 import BookItFormWrapper from '../styles/BookItForm/BookItFormWrapper.js'
 import DateField from '../styles/BookItForm/DateField.js'
@@ -29,6 +30,8 @@ class BookItForm extends React.Component {
         this.renderGuestList = this.renderGuestList.bind(this)
         this.handleGuestListClick = this.handleGuestListClick.bind(this)
         this.handleMonthChangeClick = this.handleMonthChangeClick.bind(this)
+        this.isUserInfoComplete = this.isUserInfoComplete.bind(this)
+        this.renderBookingSummary = this.renderBookingSummary.bind(this)
     }
 
     renderCalendar() {
@@ -48,6 +51,13 @@ class BookItForm extends React.Component {
             return <GuestList guestsBooked = {Object.create(this.props.userInfo.guestsBooked)} guestsAllowed = {this.props.guestsAllowed} changeGuests = {this.props.changeGuests}/>
         }
         return <div></div>
+    }
+
+    renderBookingSummary() {
+        if (this.isUserInfoComplete()) {
+            return (<BookingSummaryList pricePerNight = {this.props.pricePerNight} daysRenting = {this.props.daysRenting}/>)
+        }
+        return null
     }
 
     handleGuestListClick(event) {
@@ -78,6 +88,13 @@ class BookItForm extends React.Component {
         }
     }
 
+    isUserInfoComplete() {
+        if (this.props.userInfo.daysBooked.end !== '' && this.props.userInfo.daysBooked.start !== '') {
+            return true
+        }
+        return false
+    }
+
 
 
     render() {
@@ -104,6 +121,7 @@ class BookItForm extends React.Component {
                 <div style = {{float: 'right'}}>^</div>
             </BookItButton>
             {this.renderGuestList()}
+            {this.renderBookingSummary()}
             <CheckoutButtonWrapper>
               <BookItButton primary><div style = {{color: 'white'}}>Checkout</div></BookItButton>
               <ButtonSubtext>You Won't be Charged Yet</ButtonSubtext>
