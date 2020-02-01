@@ -8,15 +8,14 @@ import BookItForm from './BookItForm.jsx'
 import Footer from './Footer.jsx'
 import CheckoutWrapper from '../styles/Checkout/CheckoutWrapper.js'
 const calendar = require('../../../calendar/helpers.js');
+import moment from 'moment'
 
 
 
 class Checkout extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.refs)
         this.calendar = calendar.generateCalendar()
-        console.log(this.calendar)
         this.state = {
             name : '',
             bookedDates: {},
@@ -34,8 +33,8 @@ class Checkout extends React.Component {
                     infant: 0
                 },
                 daysBooked: {
-                    start: "02/01/20",
-                    end: "02/02/20"
+                    start: "",
+                    end: ""
                 }
 
             }
@@ -46,6 +45,8 @@ class Checkout extends React.Component {
         this.getHouseInfo = this.getHouseInfo.bind(this)
         this.nightlyPrice = this.nightlyPrice.bind(this)
         this.changeGuests = this.changeGuests.bind(this)
+        this.changeDaysBooked = this.changeDaysBooked.bind(this)
+        this.daysRenting = this.daysRenting.bind(this)
 
     }
 
@@ -54,12 +55,23 @@ class Checkout extends React.Component {
             state.userInfo.guestsBooked = newGuestBooked
             return state
         })
+    }
 
-
+    changeDaysBooked(bookingInfo) {
+        let typeBooked = Object.keys(bookingInfo)[0]
+        let dateBooked = bookingInfo[typeBooked]
+        this.setState((state,props) => {
+            state.userInfo.daysBooked[typeBooked] = dateBooked
+            return state
+        })
     }
 
     nightlyPrice() {
         return this.state.priceRelatedToSumOfAdultAndChild[this.state.userInfo.guestsBooked.adult + this.state.userInfo.guestsBooked.child]
+    }
+
+    daysRenting() {
+        return (moment(this.state.userInfo.daysBooked.end) - moment(this.state.userInfo.daysBooked.start))/(1000*60*60*24)
     }
 
     componentDidMount() {
@@ -74,7 +86,6 @@ class Checkout extends React.Component {
                     console.log(state)
                     calendar.bookDays(state.calendar, response.data.bookedDates)
                     response.data.calendar = state.calendar
-                    debugger
                     state = response.data
                     return state
                 })
@@ -86,7 +97,8 @@ class Checkout extends React.Component {
         return (
             <CheckoutWrapper>
               <Header  pricePerNight = {this.nightlyPrice()} numberOfReviews = {this.state.numberOfReviews} starReviewTotal = {this.state.starReviewTotal}/>
-              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)}/>
+              <BookItForm userInfo = {this.state.userInfo} guestsAllowed = {this.state.guestsAllowed} pricePerNight = {this.nightlyPrice()} daysRenting = {this.daysRenting()}
+              changeGuests = {this.changeGuests} flatCalendar = {calendar.flattenCalendar(this.state.calendar)} changeDaysBooked = {this.changeDaysBooked}/>
               <Footer />
             </CheckoutWrapper>
         )

@@ -61,7 +61,7 @@ var generateCalendar = function() {
             dayOfWeek: dayOfWeek, 
             weekOfMonth: currentWeekOfMonth
             }
-        calendar[year][month].calendar[currentWeekOfMonth][dayOfWeek] = {dayOfMonth: dayOfMonth}
+        calendar[year][month].calendar[currentWeekOfMonth][dayOfWeek] = {dayOfMonth: dayOfMonth, date: currentDate.format('l')}
         currentDate.add(1, 'day')
         previousWeekOfMonth = currentWeekOfMonth
     }
@@ -73,7 +73,7 @@ var bookDays = function(calendar, bookedDays) {
         return
     }
     for (let bookedDay in bookedDays) {
-        wrappedBookedDay = moment(bookedDay)
+        let wrappedBookedDay = moment(bookedDay)
         let year = wrappedBookedDay.year()
         let month = wrappedBookedDay.month()
         let dayOfMonth = parseInt(wrappedBookedDay.format('D'))

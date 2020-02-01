@@ -7,12 +7,12 @@ import IncrementerButton from '../styles/GuestIncrementer/IncrementerButton.js'
 import GuestIncrementerWrapper from '../styles/GuestIncrementer/GuestIncrementerWrapper.js'
 
 const GuestIncrementer = (props) => {
-    const handleClick = function(isAdding, event) {
+    const handleClick = function(isSubtracting, event) {
         
-        if (props.guestsBooked[props.current] < props.guestsAllowed[props.current] && isAdding === false) {
+        if (props.guestsBooked[props.current] < props.guestsAllowed[props.current] && isSubtracting === false) {
             props.guestsBooked[props.current] += 1
             props.changeGuests(props.guestsBooked)
-        } else if (props.guestsBooked[props.current] > 0 && isAdding === true) {
+        } else if (props.guestsBooked[props.current] > 0 && isSubtracting === true) {
             props.guestsBooked[props.current] -= 1
             props.changeGuests(props.guestsBooked)
         }

@@ -9,7 +9,6 @@ import HeaderWrapper from '../styles/Header/HeaderWrapper.js'
 
 
 const Header = (props) => {
-    console.log(props)
     return (
         <HeaderWrapper>
             <PricePerNightInfo pricePerNight = {props.pricePerNight}/>

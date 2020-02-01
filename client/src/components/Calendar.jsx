@@ -9,10 +9,9 @@ import PopDownWrapper from '../styles/BookItForm/PopDownWrapper.js'
 import IncrementerButton from '../styles/GuestIncrementer/IncrementerButton.js'
 
 const Calendar = (props) => {
-    debugger
 
     let weeks = props.currentMonth.calendar.map((days) => {
-        return (<Week days = {days}/>)}
+return (<Week days = {days} changeDaysBooked = {props.changeDaysBooked} currentCalendarClicked = {props.currentCalendarClicked}/>)}
     );
 
 

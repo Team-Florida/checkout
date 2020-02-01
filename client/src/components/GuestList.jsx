@@ -9,9 +9,6 @@ import PopDownWrapper from '../styles/BookItForm/PopDownWrapper.js'
 class GuestList extends React.Component {
     constructor(props) {
         super(props)
-        
-
-        console.log(props)
     }
 
     render() {
