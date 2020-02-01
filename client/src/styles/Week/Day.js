@@ -6,7 +6,6 @@ height: 38px;
 border: 1px solid rgb(216, 216, 216);
 text-align: center;
 font-size: 14px;
-/* background: ${props => props.isBooked ? "red" : "none"}; */
 text-decoration: ${props => props.isBooked ? "line-through" : "none"};
 `;
 

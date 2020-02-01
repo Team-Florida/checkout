@@ -73,7 +73,7 @@ var bookDays = function(calendar, bookedDays) {
         return
     }
     for (let bookedDay in bookedDays) {
-        wrappedBookedDay = moment(bookedDay)
+        let wrappedBookedDay = moment(bookedDay)
         let year = wrappedBookedDay.year()
         let month = wrappedBookedDay.month()
         let dayOfMonth = parseInt(wrappedBookedDay.format('D'))
