@@ -13,3 +13,6 @@ client/dist/bundle.js
 #Test Reports
 coverage/
 
+#Code snippits for talks
+example.js
+

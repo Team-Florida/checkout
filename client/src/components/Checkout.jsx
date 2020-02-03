@@ -36,10 +36,7 @@ class Checkout extends React.Component {
                     start: "",
                     end: ""
                 }
-
-            }
-
-            
+            }  
         }
 
         this.getHouseInfo = this.getHouseInfo.bind(this)
@@ -47,7 +44,6 @@ class Checkout extends React.Component {
         this.changeGuests = this.changeGuests.bind(this)
         this.changeDaysBooked = this.changeDaysBooked.bind(this)
         this.daysRenting = this.daysRenting.bind(this)
-
     }
 
     changeGuests(newGuestBooked) {
@@ -82,15 +78,12 @@ class Checkout extends React.Component {
         axios.get('/house')
             .then((response) => {
                 this.setState((state, props) => {
-                    console.log('this is state ')
-                    console.log(state)
                     calendar.bookDays(state.calendar, response.data.bookedDates)
                     response.data.calendar = state.calendar
                     state = response.data
                     return state
                 })
             });
-
     }
 
     render() {

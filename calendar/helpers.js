@@ -2,7 +2,7 @@ const moment = require('moment')
 
 var monthMap = {
     0: 'Janurary',
-    1: 'Feburary',
+    1: 'February',
     2: 'March',
     3: 'April',
     4: 'May',

@@ -8,6 +8,10 @@ const DateArrow = styled.div`
     height: auto;
     background-color: white;
     padding-right: 13px;
+    padding-left: 13px;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
     border: '1px solid #e4e4e4';
     `;
 
