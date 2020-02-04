@@ -5,7 +5,7 @@ const CheckoutWrapper = styled.div`
     color: '#484848';
     border: 1px solid #e4e4e4;
     border-width: 1px;
-    width: 326px;
+    width: 360px;
     height: auto;
     padding-left: 24px;
     padding-right: 24px;
