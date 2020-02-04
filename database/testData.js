@@ -75,7 +75,10 @@ const generateData = function(amountOfData) {
             priceRelatedToSumOfAdultAndChild: getPriceRelatedToSumOfAdultAndChild(adultAndChild),
             views: getViews()
         };
+        data['_id'] = i + 1
+        // data['aaaaaaaaaaaaaa'] = 123456789
         dataset.push(data)
+        
     }
     return dataset
 }
