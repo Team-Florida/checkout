@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 2000
 const path = require('path')
+
+var cors = require('cors')
+
+app.use(cors())
 
 const db = require('../database/index.js')
 

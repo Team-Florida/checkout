@@ -75,7 +75,7 @@ class Checkout extends React.Component {
     }
 
     getHouseInfo() {
-        axios.get('/house')
+        axios.get('http://localhost:2000/house')
             .then((response) => {
                 this.setState((state, props) => {
                     calendar.bookDays(state.calendar, response.data.bookedDates)
