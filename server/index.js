@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 2000
 const path = require('path')
+const seedingScript = require('../database/seedingScript.js')
 
 var cors = require('cors')
 

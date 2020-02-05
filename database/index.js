@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/checkout');
+mongoose.connect('mongodb://database/checkout');
 
 let repoSchema = mongoose.Schema({
     _id: Number,
