@@ -75,7 +75,17 @@ class Checkout extends React.Component {
     }
 
     getHouseInfo() {
-        axios.get('http://localhost:2000/house')
+        const url = new URL(window.location.href);
+        const property_id = url.searchParams.get("house");
+        console.log('the property id is ' + property_id)
+        console.log(url)
+        let server_route
+        if (property_id === null) {
+            server_route = 'http://localhost:2000/house';
+        } else {
+            server_route = 'http://localhost:2000/house/:' + property_id;
+        }
+        axios.get(server_route)
             .then((response) => {
                 this.setState((state, props) => {
                     calendar.bookDays(state.calendar, response.data.bookedDates)
