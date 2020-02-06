@@ -11,10 +11,11 @@ let insertTestData = function() {
     });
 }
 
-db.House.remove({}, (err, result) => {
+db.House.find({}, (err, result) => {
+    console.log('the database entry length is ' + result.length)
     if (err) {
         console.log(err);
-    } else {
+    } else if (result.length < 100){
         insertTestData()
     }
 });
